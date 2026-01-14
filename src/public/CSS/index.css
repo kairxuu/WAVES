@@ -1335,7 +1335,8 @@ footer::before {
     }
 
     .hero-image-wrapper {
-        margin-top: -80px;
+        margin-top: 0;
+        /* Fix overlap with text */
         padding: 0 10px;
     }
 
@@ -1548,6 +1549,8 @@ footer::before {
 @media (max-width: 768px) {
     .contact-bento-grid {
         grid-template-columns: 1fr;
+        gap: 50px;
+        /* Increased gap */
     }
 
     .faq-question {
