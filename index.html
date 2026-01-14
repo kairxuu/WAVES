@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAVES - L'Océan, Notre Avenir</title>
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="global.css">
+</head>
+
+<body>
+    <div class="apple-glow-bg"></div>
+    <script src="navbar.js"></script>
+
+    <main>
+        <!-- Apple Hero (Video Replacement) -->
+        <!-- Keeping video if preferred, but Apple style usually implies clean typography. 
+         Let's try a hybrid: Full screen video but centered clean typography with rounded bottom.
+         For consistency "reprends le style", I will use the new .hero-apple structure but maybe adapt it for video?
+         Actually, let's stick to the REQUESTED style: Rounded Hero + Floating Image strip. It is safer to be consistent. 
+         Wait, index.html is the homepage. Often has a bigger splash. 
+         I will use the .hero-apple class but perhaps make it taller or keep the video inside it?
+         Let's use the Pure Apple Style: Black Rounded Header + clear typography. It is extremely clean.
+    -->
+        <section class="hero-apple" style="padding-bottom: 120px;">
+            <h1>Exploration Océanique. <br>Réinventée.</h1>
+            <p>Plongez dans l'inconnu avec des technologies de pointe et une mission de préservation absolue.</p>
+            <br>
+            <a href="#exploration" class="cta-button-apple"
+                style="display:inline-block; width:auto; background: #0071e3; color: #fff;">Commencer l'immersion</a>
+        </section>
+
+        <!-- Floating Video/Image Strip -->
+        <div class="hero-image-wrapper">
+            <!-- Using the video in a rounded container? Or just a nice image? Let's use the video as a "Live Wallpaper" inside the rounded strip. -->
+            <video src="src/public/VID/hero-background.mp4" autoplay loop muted class="hero-image-strip"
+                style="object-fit: cover;"></video>
+        </div>
+
+        <!-- Big Text Statement -->
+        <section class="section-big-text reveal">
+            <p class="big-text">
+                Explorer l'inconnu. <br>
+                <span>Pour mieux le protéger.</span>
+            </p>
+        </section>
+
+        <!-- Zig-Zag Features -->
+        <section class="section-zigzag">
+            <!-- Row 1 -->
+            <div class="zigzag-row reveal">
+                <div class="zigzag-content">
+                    <h3>Les Profondeurs</h3>
+                    <p>De la barrière de corail aux fosses abyssales, chaque mètre est une découverte. Nous utilisons la
+                        photogrammétrie haute résolution pour créer des jumeaux numériques des récifs, permettant un
+                        suivi biologique millimétrique sans impact physique.</p>
+                </div>
+                <div class="zigzag-image">
+                    <img src="src/public/IMG/underwater-exploration.png" alt="Exploration" data-speed="0.05">
+                </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="zigzag-row reveal">
+                <div class="zigzag-content">
+                    <h3>Conservation Active</h3>
+                    <p>La science doit servir l'action. Nos programmes de restauration corallienne s'appuient sur la
+                        génétique pour sélectionner des souches super-résistantes à la chaleur ('Super corals'),
+                        assurant la survie des écosystèmes face au réchauffement climatique.</p>
+                </div>
+                <div class="zigzag-image">
+                    <img src="src/public/IMG/ocean-conservation.png" alt="Conservation" data-speed="0.05">
+                </div>
+            </div>
+        </section>
+
+        <!-- Technologies Section (Bento) -->
+        <section class="section-apple reveal">
+            <div class="section-header">
+                <h2>Technologie.</h2>
+                <p>L'innovation au service du vivant.</p>
+            </div>
+            <div class="bento-grid reveal-stagger" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="bento-card">
+                    <h3 class="text-gradient">Drones IX-5</h3>
+                    <p>6000m de profondeur. Résolution millimétrique. Zéro perturbation.</p>
+                </div>
+                <div class="bento-card">
+                    <h3 class="text-gradient">e-DNA</h3>
+                    <p>Une goutte d'eau pour identifier tout un écosystème.</p>
+                </div>
+                <div class="bento-card">
+                    <h3 class="text-gradient">Neural Ocean</h3>
+                    <p>Notre IA prédit les changements climatiques avant qu'ils n'arrivent.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted Partners Section (Credibility Signal) -->
+        <section class="section-apple section-partners">
+            <p class="partners-intro-text">Soutenus par les leaders mondiaux</p>
+            <div class="partners-grid">
+                <div class="partner-item">
+                    <img src="src/public/IMG/partner-unesco.png" alt="UNESCO" class="partner-logo">
+                    <span class="partner-name">UNESCO Ocean</span>
+                </div>
+                <div class="partner-item">
+                    <img src="src/public/IMG/partner-natgeo.png" alt="National Geographic" class="partner-logo">
+                    <span class="partner-name">National Geographic</span>
+                </div>
+                <div class="partner-item">
+                    <img src="src/public/IMG/partner-seashepherd.png" alt="Sea Shepherd" class="partner-logo">
+                    <span class="partner-name">Sea Shepherd</span>
+                </div>
+                <div class="partner-item">
+                    <img src="src/public/IMG/partner-cnrs.png" alt="CNRS" class="partner-logo">
+                    <span class="partner-name">CNRS</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section (Stats Strip) -->
+        <section class="section-apple reveal section-impact">
+            <div class="section-header section-impact-header">
+                <h2>Impact Réel.</h2>
+            </div>
+
+            <div class="bento-grid impact-stats-grid">
+                <div class="impact-stat-item">
+                    <h3 class="impact-stat-number">18</h3>
+                    <p class="impact-stat-label">Expéditions</p>
+                </div>
+                <div class="impact-stat-item">
+                    <h3 class="impact-stat-number">5,234</h3>
+                    <p class="impact-stat-label">Espèces Recensées</p>
+                </div>
+                <div class="impact-stat-item">
+                    <h3 class="impact-stat-number">12</h3>
+                    <p class="impact-stat-label">Sanctuaires Créés</p>
+                </div>
+                <div class="impact-stat-item">
+                    <h3 class="impact-stat-number">100%</h3>
+                    <p class="impact-stat-label">Données Open Data</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join CTA Section -->
+        <section class="section-apple section-join-cta">
+            <h2>Rejoignez la vague.</h2>
+            <p>Votre engagement est la seule ressource que nous ne pouvons pas synthétiser. Participez à l'histoire.</p>
+            <a href="contact.html" class="cta-button-apple"
+                style="background: #fff; color: #000; width: auto; padding: 18px 50px;">Agir Maintenant</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" style="text-align: left;">
+            <div class="footer-column">
+                <h3>À Propos de WAVES</h3>
+                <p>Rejoignez-nous pour protéger le cœur bleu de notre planète. La mer nous rassemble.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">Mission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Votre email">
+                    <button type="submit">Suivre</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 WAVES Ocean Initiative. Organisation à but non lucratif.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: #86868b; text-decoration: none; font-size: 11px;">Mentions Légales</a>
+                <a href="#" style="color: #86868b; text-decoration: none; font-size: 11px;">Politique de
+                    Confidentialité</a>
+                <a href="#" style="color: #86868b; text-decoration: none; font-size: 11px;">Plan du Site</a>
+            </div>
+        </div>
+    </footer> <!-- Lenis & Effects -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="src/public/js/effects.js"></script>
+</body>
+
+</html>

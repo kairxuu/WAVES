@@ -1,0 +1,1498 @@
+/* Hero 3D Parallax Styles */
+hero {
+    display: block;
+    /* Essential for custom elements */
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    /* CSS Perspective for Parallax */
+    perspective: 100px;
+    /* Increased for better stability */
+    perspective-origin: center;
+    transform-style: preserve-3d;
+}
+
+#parallax-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.layer-back {
+    /* Furthest back - moves slowest */
+    /* Z = -100px (1x perspective distance away) -> dist = 200px. Scale = 200/100 = 2 */
+    transform: translateZ(-100px) scale(2);
+    z-index: -1;
+}
+
+.layer-mid {
+    /* Middle layer - floating elements */
+    /* Z = -50px -> dist = 150px. Scale = 150/100 = 1.5 */
+    transform: translateZ(-50px) scale(1.5);
+    z-index: 0;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+.layer-front {
+    /* Foreground - normal speed - clickable things */
+    transform: translateZ(0);
+    z-index: 1;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+#video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#background-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#glass {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 50, 0.3), rgba(0, 0, 0, 0.6));
+    /* Modern Gradient Overlay */
+    z-index: 0;
+}
+
+/* 3D Floating Bubbles */
+.particles {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bubble {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2), inset 0 0 10px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    animation: floatBubble 10s infinite ease-in-out;
+    animation-delay: calc(-1s * var(--i));
+}
+
+.bubble:nth-child(even) {
+    background: rgba(173, 216, 230, 0.15);
+    /* Light blue tint */
+}
+
+@keyframes floatBubble {
+
+    0%,
+    100% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(50vh) scale(1);
+        /* Move up */
+    }
+
+    100% {
+        transform: translateY(-20vh) scale(1.5);
+        /* Float off top */
+        opacity: 0;
+    }
+}
+
+/* Randomize positions slightly in CSS or just rely on animation delays & offsets */
+.bubble:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+}
+
+.bubble:nth-child(2) {
+    left: 20%;
+    animation-duration: 12s;
+    width: 25px;
+    height: 25px;
+}
+
+.bubble:nth-child(3) {
+    left: 35%;
+    animation-duration: 10s;
+}
+
+.bubble:nth-child(4) {
+    left: 50%;
+    animation-duration: 14s;
+    width: 10px;
+    height: 10px;
+}
+
+.bubble:nth-child(5) {
+    left: 65%;
+    animation-duration: 9s;
+}
+
+.bubble:nth-child(6) {
+    left: 80%;
+    animation-duration: 11s;
+    width: 30px;
+    height: 30px;
+}
+
+.bubble:nth-child(7) {
+    left: 90%;
+    animation-duration: 15s;
+}
+
+/* Add more randomization in production code or use SCSS loop */
+
+
+#hero-text {
+    position: relative;
+    /* z-index: 1;  Handled by layer-front */
+    text-align: center;
+    color: #ffffff;
+    padding: 0 20px;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+#hero-text h1 {
+    font-size: 6rem;
+    /* Even larger */
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: -2px;
+    background: linear-gradient(to right, #ffffff, #a2c2e6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    /* Restore shadow to gradient text */
+}
+
+#hero-text h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    /* Cinematic spacing */
+}
+
+#hero-text p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    line-height: 1.7;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Modern CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 16px 40px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    /* Pillow shape */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Bouncy spring */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.cta-button:hover:before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    opacity: 0.8;
+}
+
+/* ... keep scroll animations ... */
+.scroll-indicator span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    margin: -10px;
+    animation: scroll 2s infinite;
+}
+
+.scroll-indicator span:nth-child(2) {
+    animation-delay: -.2s;
+}
+
+.scroll-indicator span:nth-child(3) {
+    animation-delay: -.4s;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
+}
+
+/* Modern Content Sections - Fluid & Organic */
+.content-section {
+    padding: 120px 20px;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    perspective: 1000px;
+    /* Enable 3D space for children */
+}
+
+/* 3D Floating Decorative Elements */
+.floating-3d-element {
+    position: absolute;
+    z-index: 2;
+    /* In front of container if we want, or adjust */
+    opacity: 0.9;
+    pointer-events: none;
+    /* Removed drop-shadow on container as it highlights the bounding box */
+    animation: float3D 12s ease-in-out infinite;
+    mix-blend-mode: multiply;
+    /* Blends nicely with white bg */
+}
+
+.floating-3d-element img {
+    width: 350px;
+    height: auto;
+    display: block;
+    /* Push light pixels to pure white for better blending */
+    filter: contrast(1.1) brightness(1.1);
+    /* Fade out the edges so the rectangle is invisible */
+    -webkit-mask-image: radial-gradient(closest-side, black 60%, transparent 100%);
+    mask-image: radial-gradient(closest-side, black 60%, transparent 100%);
+}
+
+.shape-1 {
+    top: 50px;
+    left: 5%;
+    transform: rotate(-10deg);
+}
+
+.shape-2 {
+    bottom: 50px;
+    right: 5%;
+    transform: rotate(15deg);
+    animation-delay: -5s;
+}
+
+@keyframes float3D {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(5deg) translateZ(50px);
+    }
+}
+
+/* Add organic background decoration */
+.content-section::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(26, 88, 197, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+    top: -100px;
+    right: -100px;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 60px;
+    border-radius: 40px;
+    /* Softer corners */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    /* Deeper shadow */
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.content-section .container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+}
+
+/* Grid Layout Improvements */
+.content-grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    /* More breathing room */
+}
+
+.content-grid.reverse {
+    flex-direction: row-reverse;
+}
+
+.text-content {
+    flex: 1;
+    text-align: left;
+}
+
+.image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Decorative element behind image */
+.image-content::after {
+    content: '';
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    background: linear-gradient(135deg, rgba(26, 88, 197, 0.2), transparent);
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    /* Organic Blob Shape */
+    z-index: -1;
+    animation: blobMorph 8s infinite linear;
+}
+
+@keyframes blobMorph {
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(180deg);
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: rotate(360deg);
+    }
+}
+
+.section-image {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    border-radius: 20px;
+    /* Asymmetrical borders for images */
+    border-radius: 30px 10px 30px 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.section-image:hover {
+    transform: scale(1.03) rotate(-2deg);
+    border-radius: 10px 30px 10px 30px;
+}
+
+/* Typography Refinement */
+.content-section h2 {
+    font-size: 3.5rem;
+    /* Larger and bolder */
+    margin-bottom: 25px;
+    color: #0d1b2a;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.content-section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(90deg, #1a58c5, #4cc9f0);
+    /* Gradient Line */
+    margin: 20px 0 0 0;
+    border-radius: 3px;
+}
+
+.content-section p {
+    font-size: 1.25rem;
+    /* More readable */
+    line-height: 1.8;
+    color: #4b5563;
+    font-weight: 400;
+}
+
+/* Alternate Section Styling */
+.alt-bg {
+    background: #f0f8ff;
+    position: relative;
+}
+
+.alt-bg::before {
+    left: -100px;
+    right: auto;
+    background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.alt-bg .section-image {
+    border-radius: 10px 30px 10px 30px;
+    /* Invert asymmetry */
+}
+
+.alt-bg .image-content::after {
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.2), transparent);
+    animation-direction: reverse;
+}
+
+/* Responsive Grid */
+@media (max-width: 900px) {
+
+    .content-grid,
+    .content-grid.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-content {
+        text-align: center;
+    }
+
+    .content-section h2::after {
+        margin: 10px auto 0 auto;
+        /* Center underline on mobile */
+    }
+}
+
+/* Values Section */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: linear-gradient(135deg, #1a58c5, #4cc9f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.value-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0a192f;
+}
+
+/* Stats Section */
+.stats-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #1a58c5, #0d1b2a);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item h3 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #64ffda, #ffffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- Apple Modern Aesthetic (Centralized) --- */
+
+:root {
+    --apple-gray: #f5f5f7;
+    --apple-text: #1d1d1f;
+    --apple-blue: #0071e3;
+    --apple-radius: 40px;
+    --apple-card-radius: 32px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #1a58c5 0%, #4cc9f0 50%, #1a58c5 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Big Text Pulse */
+.big-text {
+    animation: breathe 8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.02);
+        opacity: 0.9;
+    }
+
+    /* Subtle breathing */
+}
+
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Apple-style ease-out */
+    will-change: opacity, transform;
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays for children if needed */
+.reveal-stagger>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.revealed>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger.revealed>*:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.reveal-stagger.revealed>*:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.reveal-stagger.revealed>*:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.reveal-stagger.revealed>*:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+
+/* Rounded Hero */
+/* Rounded Hero - Apple Light Theme */
+.hero-apple {
+    padding: 180px 20px 100px;
+    background: #f5f5f7;
+    /* Apple Light Gray */
+    color: #1d1d1f;
+    /* Apple Black */
+    text-align: center;
+    border-bottom-left-radius: var(--apple-radius);
+    border-bottom-right-radius: var(--apple-radius);
+    margin-bottom: -60px;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-apple h1 {
+    font-size: 5rem;
+    /* Slightly smaller for clean look */
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0 auto 24px;
+    max-width: 900px;
+    letter-spacing: -0.02em;
+    color: #1d1d1f;
+    background: none;
+    /* Remove gradient for solid impact */
+    -webkit-text-fill-color: #1d1d1f;
+}
+
+.hero-apple p {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #86868b;
+    /* Apple Gray text */
+    max-width: 700px;
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+/* Floating Image Strip */
+.hero-image-wrapper {
+    padding: 0 40px;
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-image-strip {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--apple-card-radius);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    display: block;
+}
+
+/* Generic Apple Section */
+.section-apple {
+    padding: 120px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-header {
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--apple-text);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: #86868b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.editorial-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #424245;
+    font-weight: 400;
+}
+
+.editorial-text p {
+    margin-bottom: 30px;
+}
+
+.editorial-text strong {
+    font-weight: 600;
+    color: var(--apple-text);
+}
+
+/* Bento Grid */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.bento-card {
+    background: rgba(255, 255, 255, 0.65);
+    /* Translucent Apple White */
+    backdrop-filter: blur(25px);
+    /* Heavy blur */
+    -webkit-backdrop-filter: blur(25px);
+    padding: 40px;
+    border-radius: var(--apple-card-radius);
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    /* Soft shadow */
+}
+
+.bento-card:hover {
+    transform: scale(1.02) translateY(-5px);
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Apple Product Page Layouts --- */
+
+/* Big Text Section */
+.section-big-text {
+    padding: 150px 40px;
+    background: #fff;
+    text-align: center;
+}
+
+.big-text {
+    font-size: 5rem;
+    /* Massive */
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--apple-black);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.big-text span {
+    color: var(--apple-gray);
+    /* Greyed out parts */
+}
+
+/* Zig-Zag Feature Rows */
+.section-zigzag {
+    padding: 100px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.zigzag-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 120px;
+    opacity: 0;
+    /* For reveal animation */
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zigzag-row.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.zigzag-row:nth-child(even) {
+    flex-direction: row-reverse;
+    /* Alternating */
+}
+
+.zigzag-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.zigzag-content h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--apple-black);
+}
+
+.zigzag-content p {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    color: var(--apple-gray);
+    font-weight: 400;
+}
+
+.zigzag-image {
+    flex: 1.2;
+    /* Image slightly larger */
+    border-radius: var(--apple-radius);
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    background: #f5f5f7;
+    height: 500px;
+    /* Fixed height for consistency */
+}
+
+.zigzag-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.zigzag-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Mobile ZigZag */
+@media (max-width: 900px) {
+
+    .zigzag-row,
+    .zigzag-row:nth-child(even) {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .big-text {
+        font-size: 3rem;
+    }
+}
+
+.bento-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--apple-text);
+}
+
+.bento-card p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #424245;
+}
+
+/* Image Utilities */
+.feature-image-block {
+    margin: 60px 0;
+}
+
+.feature-image {
+    width: 100%;
+    border-radius: var(--apple-card-radius);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styling - Apple Clean */
+.form-apple {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--apple-gray);
+    padding: 40px;
+    border-radius: var(--apple-card-radius);
+    text-align: left;
+}
+
+.form-apple .form-group {
+    margin-bottom: 24px;
+}
+
+.form-apple label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--apple-text);
+    font-size: 0.95rem;
+}
+
+.form-apple input,
+.form-apple textarea {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 1rem;
+    color: var(--apple-text);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s;
+    font-family: inherit;
+}
+
+.form-apple input:focus,
+.form-apple textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.3);
+}
+
+.cta-button-apple {
+    display: inline-block;
+    padding: 18px 40px;
+    background: #0071e3;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    /* Optional: full width on forms */
+    text-align: center;
+}
+
+.cta-button-apple:hover {
+    background: #0077ed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-apple h1 {
+        font-size: 3rem;
+    }
+
+    .hero-image-strip {
+        height: 300px;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-apple {
+        padding: 80px 24px;
+    }
+
+    .hero-image-wrapper {
+        padding: 0 20px;
+    }
+}
+
+/* Modern Footer - Apple Style */
+footer {
+    background: #f5f5f7;
+    /* Apple Footer Gray */
+    color: #1d1d1f;
+    padding: 60px 0 30px;
+    font-size: 12px;
+    border-top: 1px solid #d2d2d7;
+}
+
+/* Remove decorative background */
+footer::before {
+    display: none;
+}
+
+.footer-content {
+    max-width: 980px;
+    /* Apple Standard Width */
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 Fixed Columns */
+    gap: 40px;
+}
+
+.footer-column h3 {
+    color: #1d1d1f;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: none;
+    /* Apple doesn't uppercase headers */
+}
+
+/* Remove Teal underline */
+.footer-column h3::after {
+    display: none;
+}
+
+.footer-column p {
+    font-size: 12px;
+    color: #424245;
+    line-height: 1.5;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #424245;
+    /* Dark Gray Link */
+    text-decoration: none;
+    transition: color 0.1s ease;
+}
+
+.footer-links a:hover {
+    color: #000;
+    text-decoration: underline;
+    padding-left: 0;
+    /* No shift on hover */
+}
+
+.footer-bottom {
+    max-width: 980px;
+    margin: 40px auto 0;
+    padding: 20px 20px 0;
+    border-top: 1px solid #d2d2d7;
+    text-align: left;
+    color: #86868b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Apple Newsletter Form - Minimal */
+.newsletter-form input {
+    width: 100%;
+    padding: 8px 12px;
+    background: #fff;
+    border: 1px solid #d2d2d7;
+    border-radius: 6px;
+    color: #1d1d1f;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.newsletter-form button {
+    width: auto;
+    padding: 6px 16px;
+    background: #0071e3;
+    color: white;
+    font-size: 12px;
+    border-radius: 12px;
+}
+
+.newsletter-form button:hover {
+    background: #0077ed;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Contact Form Styles */
+#contact-form {
+    text-align: left;
+    margin-top: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: #fdfdfd;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1a58c5;
+    box-shadow: 0 0 0 4px rgba(26, 88, 197, 0.1);
+}
+
+#contact-form button {
+    cursor: pointer;
+    background: transparent;
+    margin-top: 10px;
+}
+
+#contact-form button:hover {
+    background: #1a58c5;
+    color: #fff !important;
+}
+
+/* --- Apple Glow Background --- */
+.apple-glow-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+    pointer-events: none;
+    background: #ffffff;
+}
+
+.apple-glow-bg::before,
+.apple-glow-bg::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+    animation: floatGlow 20s infinite alternate ease-in-out;
+}
+
+.apple-glow-bg::before {
+    background: #0071e3;
+    /* Apple Blue */
+    top: -10%;
+    left: -10%;
+}
+
+.apple-glow-bg::after {
+    background: #4cc9f0;
+    /* Cyan */
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -10s;
+}
+
+@keyframes floatGlow {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(40px, 40px) scale(1.1);
+    }
+}
+
+/* --- Specific Section Overrides (Refactored from Inline) --- */
+/* --- Specific Section Overrides (Refactored from Inline) --- */
+.section-partners {
+    padding: 80px 20px;
+    background: #fbfbfd;
+    border-radius: 0;
+    /* Full width means no corners usually, or we keep them if it's a floating card. User said "toute la longeur" which implies edge-to-edge. */
+    margin: 60px 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+.partners-intro-text {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    color: #86868b;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.partners-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    /* Bigger gap */
+    flex-wrap: wrap;
+    opacity: 1;
+}
+
+.partner-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    /* Bigger gap between logo and text */
+    opacity: 1;
+    /* Always fully visible */
+    /* Removed transition and hover opacity */
+}
+
+/* Removed :hover state */
+
+.partner-logo {
+    height: 48px;
+    /* Larger logos (was 32px) */
+    width: auto;
+    object-fit: contain;
+    filter: none;
+}
+
+.partner-name {
+    font-size: 1.4rem;
+    /* Larger text (was 1.1rem) */
+    font-weight: 700;
+    /* Bolder */
+    color: #1d1d1f;
+    letter-spacing: -0.01em;
+}
+
+.section-join-cta {
+    background: #000;
+    border-radius: 40px;
+    margin: 0 auto 100px;
+    max-width: 1200px;
+    padding: 100px 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.section-join-cta h2 {
+    color: #fff;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.section-join-cta p {
+    color: #a1a1a6;
+    font-size: 1.4rem;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* Impact Stats Centering */
+.impact-stats-grid {
+    align-items: baseline;
+    justify-content: center;
+}
+
+.impact-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.impact-stat-number {
+    font-size: 4rem;
+    color: #1d1d1f;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+}
+
+.impact-stat-label {
+    color: #86868b;
+    font-weight: 600;
+    text-align: center;
+    width: 100%;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+
+    /* Hero Typography */
+    .hero-apple h1 {
+        font-size: 3rem;
+        /* Smaller from 5rem */
+        letter-spacing: -0.02em;
+    }
+
+    .hero-apple p {
+        font-size: 1.2rem;
+        max-width: 90%;
+    }
+
+    /* Big Text Section */
+    .big-text {
+        font-size: 2.5rem;
+        padding: 0 20px;
+    }
+
+    /* Bento Grids - Force 1 column */
+    .bento-grid {
+        grid-template-columns: 1fr !important;
+        /* Force stack */
+        gap: 20px;
+    }
+
+    /* ZigZag Layout - Stack vertically */
+    .zigzag-row {
+        flex-direction: column !important;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .zigzag-row:nth-child(even) {
+        flex-direction: column !important;
+        /* Override reverse */
+    }
+
+    .zigzag-content {
+        padding: 20px;
+    }
+
+    .zigzag-image {
+        width: 100%;
+        /* Full width container */
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .zigzag-image img {
+        width: 100%;
+        /* Force image to fit */
+        height: auto;
+        max-height: 300px;
+        /* Limit height to avoid scrolling too much */
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    /* Tech Cards & Stats */
+    .section-apple,
+    .section-join-cta {
+        padding: 60px 20px;
+        border-radius: 32px;
+        /* Slightly less rounded */
+        margin: 60px auto;
+        max-width: 90%;
+        /* Ensure it fits on screen */
+    }
+
+    .section-join-cta h2 {
+        font-size: 2.5rem;
+    }
+
+    /* Hero Image Strip */
+    .hero-image-wrapper {
+        margin-top: -80px;
+        /* Adjust overlap */
+        padding: 0 10px;
+        /* Less padding to give more space to image */
+    }
+
+    .hero-image-strip {
+        height: 200px;
+        /* Even shorter for mobile */
+        width: 100%;
+        object-fit: cover;
+    }
+
+    /* Navigation Adjustment */
+    nav ul {
+        gap: 20px;
+        /* Smaller gap if visible, heavily relies on hamburger though */
+    }
+
+    /* Partners */
+    .partners-grid {
+        gap: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+}
