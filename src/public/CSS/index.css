@@ -1186,3 +1186,164 @@ footer::before {
         line-height: 1.2;
     }
 }
+
+/* --- Contact Page Revamp --- */
+
+/* FAQ Accordion */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #0071e3;
+}
+
+.faq-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.faq-icon::before, .faq-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #1d1d1f;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.faq-icon::before { width: 2px; height: 100%; }
+.faq-icon::after { width: 100%; height: 2px; }
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg); /* Optional: if you want X */
+}
+/* Turn plus into minus animation */
+.faq-item.active .faq-icon::before {
+    transform: translate(-50%, -50%) rotate(90deg); /* align with horizontal */
+    opacity: 0; /* Or just hide vertical bar */
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.4s ease;
+    opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Approximate max height */
+    opacity: 1;
+    padding-bottom: 24px;
+}
+
+.faq-answer p {
+    color: #424245;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Contact Bento Refinement */
+.contact-bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background: #fff;
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.form-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 32px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #1d1d1f;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 16px;
+    background: rgba(245, 245, 247, 0.8);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    margin-bottom: 20px;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    background: #fff;
+    border-color: #0071e3;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+/* Floating Map */
+.floating-map {
+    img {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    img:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 60px rgba(0,0,0,0.15) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-bento-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .faq-question {
+        font-size: 1.1rem;
+    }
+    
+    .info-card, .form-card {
+        padding: 30px 20px;
+    }
+}

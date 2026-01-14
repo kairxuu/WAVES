@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="src/public/CSS/global.css">
     <link rel="stylesheet" href="src/public/CSS/index.css">
 </head>
+
 <body>
     <div class="apple-glow-bg"></div>
     <script src="src/public/js/navbar.js"></script>
@@ -26,9 +28,9 @@
                 <h2> Parlons-en.</h2>
                 <p>Que vous soyez chercheur, bénévole ou partenaire, votre voix compte.</p>
             </div>
-            <div class="bento-grid" style="align-items: start;">
-                <div class="bento-card" style="background: #fff; padding: 0;">
-                    <div style="background: var(--apple-gray); padding: 40px; border-radius: 32px; height: 100%;">
+            <div class="contact-bento-grid">
+                <div class="info-card">
+                    <div style="height: 100%;">
                         <h3>Nos Coordonnées</h3>
                         <p style="margin-bottom: 20px;">Nous sommes basés à Marseille mais nous agissons partout dans le
                             monde.</p>
@@ -46,22 +48,24 @@
                             42 Quai du Port, 13002 Marseille</p>
                     </div>
                 </div>
-                <form class="form-apple" style="width: 100%; margin: 0;">
-                    <div class="form-group">
-                        <label for="name">Nom Complet</label>
-                        <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="jean@exemple.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" placeholder="Comment pouvons-nous vous aider ?"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button-apple">Envoyer</button>
-                </form>
+                <div class="form-card">
+                    <form class="form-apple" style="width: 100%; margin: 0;">
+                        <div class="form-group">
+                            <label for="name">Nom Complet</label>
+                            <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="jean@exemple.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button-apple" style="width: 100%;">Envoyer</button>
+                    </form>
+                </div>
             </div>
         </section>
         <section class="section-apple reveal">
@@ -69,8 +73,10 @@
                 <h2>Présence Mondiale</h2>
             </div>
             <div style="max-width: 1000px; margin: 0 auto;">
-                <img src="src/public/IMG/global-presence-map.png" alt="Carte Mondiale"
-                    style="width: 100%; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                <div class="floating-map">
+                    <img src="src/public/IMG/global-presence-map.png" alt="Carte Mondiale"
+                        style="width: 100%; border-radius: 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                </div>
                 <div class="bento-grid"
                     style="margin-top: 40px; grid-template-columns: repeat(3, 1fr); text-align: center;">
                     <div>
@@ -92,23 +98,41 @@
             <div class="section-header">
                 <h2>Questions Fréquentes</h2>
             </div>
-            <div style="text-align: left; max-width: 800px; margin: 0 auto;">
-                <div style="margin-bottom: 30px; border-bottom: 1px solid #e5e5e5; padding-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #1d1d1f;">Comment puis-je rejoindre une
-                        expédition ?</h3>
-                    <p style="color: #424245;">Nous acceptons des bénévoles qualifiés (plongée, biologie, média) sur
-                        dossier. Envoyez-nous votre CV via le formulaire.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Comment puis-je rejoindre une expédition ?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nous acceptons des bénévoles qualifiés (plongée, biologie, média) sur dossier. Les places
+                            sont limitées pour garantir la sécurité et l'efficacité de nos missions. Envoyez-nous votre
+                            CV via le formulaire ci-dessus en précisant vos qualifications.</p>
+                    </div>
                 </div>
-                <div style="margin-bottom: 30px; border-bottom: 1px solid #e5e5e5; padding-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #1d1d1f;">Acceptez-vous les dons ?</h3>
-                    <p style="color: #424245;">Oui, WAVES est une organisation à but non lucratif. Tous les dons sont
-                        déductibles des impôts et financent directement nos missions.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Acceptez-vous les dons ?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oui, WAVES est une organisation à but non lucratif reconnue d'utilité publique. Tous les dons
+                            sont déductibles des impôts à hauteur de 66% et financent directement nos missions de
+                            terrain et l'achat de matériel scientifique.</p>
+                    </div>
                 </div>
-                <div style="margin-bottom: 30px; border-bottom: 1px solid #e5e5e5; padding-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: #1d1d1f;">Proposez-vous des interventions
-                        scolaires ?</h3>
-                    <p style="color: #424245;">Absolument. L'éducation est l'un de nos piliers. Contactez-nous pour
-                        organiser une venue dans votre établissement.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Proposez-vous des interventions scolaires ?
+                        <span class="faq-icon"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolument. L'éducation est l'un de nos piliers fondamentaux. Nous avons un programme
+                            pédagogique "Ocean Guardians" adapté du primaire au lycée. Contactez-nous pour organiser une
+                            venue dans votre établissement.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -142,4 +166,5 @@
     <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <script src="src/public/js/effects.js"></script>
 </body>
+
 </html>
