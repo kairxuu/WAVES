@@ -1336,9 +1336,11 @@ footer::before {
 
     .hero-brand-title {
         position: absolute;
-        bottom: 20px;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
         font-size: 8rem;
         font-weight: 800;
         color: rgba(255, 255, 255, 0.9);
