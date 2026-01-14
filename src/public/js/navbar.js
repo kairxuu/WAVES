@@ -27,17 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.body.insertAdjacentHTML("afterbegin", navbarHTML);
     const menuEl = document.getElementById('menu');
-    // Check if we are on the contact page
-    const currentPageForCTA = window.location.pathname.split("/").pop() || 'index.html';
-    const isContactPage = currentPageForCTA === 'contact.html';
 
     if (menuEl) {
-        // Only show CTA if NOT on contact page
-        const ctaButton = isContactPage ? '' : '<a href="contact.html" class="mobile-cta">Agir Maintenant</a>';
-
         const mobileFooterHTML = `
             <div class="mobile-menu-footer">
-                ${ctaButton}
+                <a href="contact.html" class="mobile-cta">Agir Maintenant</a>
                 <div style="margin-top: 20px; color: #86868b; font-size: 0.9rem;">
                     Suivez-nous sur les réseaux
                 </div>

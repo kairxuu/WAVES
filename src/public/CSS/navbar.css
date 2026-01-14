@@ -89,7 +89,9 @@
 
 @media (max-width: 768px) {
     #hamburger {
-        display: flex;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     #menu {

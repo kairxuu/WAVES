@@ -1335,8 +1335,8 @@ footer::before {
     }
 
     .hero-image-wrapper {
-        margin-top: 0;
-        /* Fix overlap with text */
+        margin-top: 40px;
+        /* Increased spacing */
         padding: 0 10px;
     }
 
