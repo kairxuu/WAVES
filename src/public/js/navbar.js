@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
           <div id="navbar">
               <nav id="nav-container">
                   <div id="logo">
-                       <a href="index.html"><img src="src/public/IMG/logo.svg" alt="Logo"></a>
+                       <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 10px;">
+                           <img src="src/public/IMG/logo.svg" alt="Logo">
+                           <span class="site-name">WAVES</span>
+                       </a>
                   </div>
                   <div id="hamburger">
                       <span></span>

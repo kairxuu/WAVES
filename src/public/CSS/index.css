@@ -1334,6 +1334,21 @@ footer::before {
         font-size: 2.5rem;
     }
 
+    .hero-brand-title {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 8rem;
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.9);
+        letter-spacing: -2px;
+        z-index: 10;
+        pointer-events: none;
+        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        mix-blend-mode: overlay;
+    }
+
     .hero-image-wrapper {
         margin-top: 40px;
         /* Increased spacing */
@@ -1362,6 +1377,12 @@ footer::before {
 }
 
 @media (max-width: 768px) {
+    .hero-brand-title {
+        font-size: 4rem;
+        /* Smaller on mobile */
+        bottom: 10px;
+    }
+
     .hero-apple {
         padding: 120px 20px 60px;
         border-radius: 0 0 30px 30px;

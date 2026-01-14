@@ -31,8 +31,28 @@
 
 #logo {
     margin-left: 20px;
-    width: 50px;
-    height: 50px;
+    width: auto;
+    /* Allow width to accommodate text */
+    height: 30px;
+    /* Aggressively reduced to 30px */
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 100%;
+    max-height: 30px;
+    /* Explicit max-height constraint */
+    width: auto;
+    object-fit: contain;
+}
+
+.site-name {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #1d1d1f;
+    letter-spacing: -0.5px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 #menu {
