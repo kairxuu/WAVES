@@ -145,20 +145,19 @@
         transition-delay: 0.2s;
     }
 
-    #menu.active .mobile-menu-footer {
-        transition-delay: 0.3s;
-        opacity: 1;
-        transform: translateY(0);
+    #menu.active li:nth-child(4) {
+        transition-delay: 0.25s;
     }
 
-    /* Restore mobile footer style if missing */
+    /* Footer */
+
+    /* Footer styling - animation handled by generic li rules now */
     .mobile-menu-footer {
         display: block;
-        margin-top: 40px;
+        margin-top: 40px !important;
+        /* Force spacing */
         text-align: center;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        /* Opacity/Transform handled by #menu li */
     }
 
     #hamburger {

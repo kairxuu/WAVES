@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (menuEl) {
         const mobileFooterHTML = `
-            <div class="mobile-menu-footer">
+            <li class="mobile-menu-footer">
                 <a href="contact.html" class="mobile-cta">Agir Maintenant</a>
                 <div style="margin-top: 20px; color: #86868b; font-size: 0.9rem;">
                     Suivez-nous sur les réseaux
                 </div>
-            </div>
+            </li>
         `;
         menuEl.insertAdjacentHTML('beforeend', mobileFooterHTML);
     }
