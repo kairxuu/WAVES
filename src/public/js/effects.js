@@ -63,6 +63,9 @@ class Parallax {
 }
 
 // Start Parallax when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    new Parallax();
+});
 
 // Scroll Reveal Observer
 const observerOptions = {
