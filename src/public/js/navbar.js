@@ -22,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     document.body.insertAdjacentHTML("afterbegin", navbarHTML);
 
-    // Mobile Menu Toggle
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
 

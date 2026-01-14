@@ -59,7 +59,3 @@ Projet soutenu (fictivement) par :
 *   National Geographic
 *   Sea Shepherd
 *   CNRS
-
----
-
-*Développé avec 💙 pour l'Océan.*
