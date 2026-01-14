@@ -8,7 +8,8 @@
     z-index: 1000;
     background-color: transparent;
     color: #ffffff;
-    padding: 1rem;
+    padding: 1.2rem 2.5rem;
+    /* Increased padding */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,7 +42,8 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 20px;
+    gap: 40px;
+    /* Increased gap from 20px */
 }
 
 #menu a {
